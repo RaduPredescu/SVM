@@ -40,7 +40,7 @@ costMatrix = 2.**np.array(costMatrix)
 # print(attributesTrain) aici nu stiu de ce fac asta, dar nu stiu ce altceva sa mai scriu ca am prea multe erori
 
 for i in range(len(costMatrix)):
-    ans = svm.SVC(kernel='linear', C=costMatrix[i]).fit(attributesTrain, classesTrain)
+    ans = svm.SVC(kernel='linear', C=float(costMatrix[i])).fit(attributesTrain, classesTrain)
     predictionsTest = ans.predict(attributesTest)
     correctPredictions = 0
     for j in range(0, len(predictionsTest)):
@@ -48,3 +48,6 @@ for i in range(len(costMatrix)):
             correctPredictions = correctPredictions+1
     print('Acuratete pentru cost 2^' + str(i-7) + ': ' + str(correctPredictions/testSize) +
           ', ' + str(correctPredictions) + ' predictii corecte din ' + str(testSize))
+
+
+
